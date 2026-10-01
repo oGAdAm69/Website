@@ -1,0 +1,1733 @@
+/* =========================================================
+   LND LAUNDRY — FRONT PAGE
+========================================================= */
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+    --bg: #03111d;
+    --bg-deep: #020a12;
+    --bg-soft: #08243a;
+
+    --white: #ffffff;
+
+    --muted: rgba(255, 255, 255, .72);
+    --soft: rgba(255, 255, 255, .46);
+    --line: rgba(255, 255, 255, .10);
+
+    --blue: #39aef5;
+    --blue-light: #8bd8ff;
+
+    --max: 1480px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--white);
+
+    background: var(--bg-deep);
+}
+
+
+a {
+    color: inherit;
+}
+
+
+img {
+    display: block;
+
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   SKIP LINK
+========================================================= */
+
+.skip-link {
+    position: fixed;
+
+    top: -100px;
+    left: 20px;
+
+    z-index: 1000;
+
+    padding:
+        12px
+        18px;
+
+    border-radius: 999px;
+
+    color: #06111a;
+
+    background: white;
+
+    text-decoration: none;
+}
+
+
+.skip-link:focus {
+    top: 20px;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page-shell {
+    min-height: 100vh;
+
+    background:
+
+        radial-gradient(
+            circle at 82% 35%,
+            rgba(52, 168, 242, .17),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            120deg,
+            #020d17 0%,
+            #041827 52%,
+            #08253a 100%
+        );
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    z-index: 100;
+
+    width: 100%;
+    height: 92px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+
+    padding:
+        0
+        clamp(26px, 5vw, 86px);
+
+    border-bottom:
+        1px solid
+        var(--line);
+
+    background:
+        rgba(2, 14, 24, .16);
+
+    backdrop-filter:
+        blur(7px);
+
+    -webkit-backdrop-filter:
+        blur(7px);
+}
+/* =========================================================
+   HOME HEADER — HIDE ON SCROLL
+========================================================= */
+
+.site-header {
+    transition:
+        transform 0.45s cubic-bezier(.22, .61, .36, 1),
+        opacity 0.35s ease;
+
+    will-change: transform;
+
+    z-index: 1000;
+}
+
+
+.site-header.header-hidden {
+    transform: translateY(-105%);
+    opacity: 0;
+}
+
+/* =========================================================
+   LARGE LND LOGO
+========================================================= */
+
+.brand {
+    justify-self: start;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 300px;
+    height: 110px;
+
+    overflow: visible;
+
+    text-decoration: none;
+}
+
+
+.site-header .brand .brand-logo {
+    display: block;
+
+    width: 275px !important;
+    height: auto !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    object-fit: contain;
+    object-position: left center;
+
+    flex-shrink: 0;
+}
+
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+    .brand {
+        width: 220px;
+        height: 85px;
+    }
+
+    .site-header .brand .brand-logo {
+        width: 205px !important;
+    }
+
+}
+
+
+/* PHONE */
+
+@media (max-width: 560px) {
+
+    .brand {
+        width: 165px;
+        height: 70px;
+    }
+
+    .site-header .brand .brand-logo {
+        width: 155px !important;
+    }
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation {
+    justify-self: center;
+
+    display: flex;
+
+    align-items: center;
+
+    gap:
+        clamp(
+            30px,
+            4vw,
+            68px
+        );
+}
+
+
+.nav-link {
+    position: relative;
+
+    padding:
+        37px
+        0
+        31px;
+
+    color:
+        rgba(255, 255, 255, .88);
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition:
+        color .25s ease;
+}
+
+
+.nav-link:hover {
+    color:
+        var(--blue-light);
+}
+
+
+/* =========================================================
+   NAV UNDERLINE
+========================================================= */
+
+.nav-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 19px;
+
+    width: 0;
+    height: 2px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 999px;
+
+    background:
+        var(--blue);
+
+    transition:
+        width .28s ease;
+}
+
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   OFFICIAL WEBSITE BUTTON
+========================================================= */
+
+.official-site-button {
+    justify-self: end;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        13px
+        22px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .47);
+
+    border-radius: 999px;
+
+    color:
+        white;
+
+    background:
+        rgba(255, 255, 255, .015);
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.official-site-button:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(102, 203, 255, .88);
+
+    background:
+        rgba(58, 174, 245, .08);
+
+    box-shadow:
+        0
+        10px
+        35px
+        rgba(31, 151, 224, .12);
+}
+
+
+.official-icon {
+    color:
+        var(--blue-light);
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 100svh;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        125px
+        clamp(28px, 5.5vw, 96px)
+        150px;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   HERO BACKGROUND
+========================================================= */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -5;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(2, 13, 23, .98) 0%,
+            rgba(3, 18, 31, .92) 36%,
+            rgba(5, 28, 46, .55) 66%,
+            rgba(8, 35, 55, .24) 100%
+        ),
+
+        radial-gradient(
+            circle at 88% 44%,
+            rgba(88, 194, 255, .20),
+            transparent 31%
+        );
+}
+
+
+/* =========================================================
+   HERO COPY
+========================================================= */
+
+.hero-copy {
+    position: relative;
+
+    z-index: 20;
+
+    width:
+        min(
+            680px,
+            54vw
+        );
+
+    margin-top: -15px;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.eyebrow {
+    margin-bottom: 25px;
+
+    color: #9fc8df;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 6px;
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero h1 {
+    max-width: 780px;
+
+    font-size:
+        clamp(
+            54px,
+            5.7vw,
+            92px
+        );
+
+    line-height: .94;
+
+    font-weight: 770;
+
+    letter-spacing: -4px;
+
+    text-wrap: balance;
+}
+
+
+.hero h1 span {
+    display: block;
+
+    margin-top: 8px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #ffffff 0%,
+            #c8ebff 28%,
+            #58b7ef 95%
+        );
+
+    background-clip: text;
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
+.hero-description {
+    margin-top: 28px;
+
+    max-width: 620px;
+
+    color:
+        rgba(255, 255, 255, .78);
+
+    font-size:
+        clamp(
+            16px,
+            1.35vw,
+            20px
+        );
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 34px;
+}
+
+
+.primary-button,
+.secondary-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 28px;
+
+    min-height: 56px;
+
+    padding:
+        0
+        28px;
+
+    border-radius: 999px;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 650;
+
+    text-decoration: none;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease,
+        border-color .3s ease;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.primary-button {
+    background:
+
+        linear-gradient(
+            90deg,
+            #158fdf,
+            #42b8ff
+        );
+
+    box-shadow:
+
+        0
+        15px
+        38px
+
+        rgba(
+            30,
+            161,
+            240,
+            .22
+        );
+}
+
+
+.primary-button:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+
+        0
+        19px
+        48px
+
+        rgba(
+            30,
+            161,
+            240,
+            .34
+        );
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+========================================================= */
+
+.secondary-button {
+    min-width: 190px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .52);
+
+    background:
+        rgba(255, 255, 255, .015);
+}
+
+
+.secondary-button:hover {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(124, 211, 255, .75);
+
+    background:
+        rgba(255, 255, 255, .055);
+}
+
+
+/* =========================================================
+   HERO ART
+========================================================= */
+
+.hero-art {
+    position: absolute;
+
+    top: 92px;
+    right: -5%;
+    bottom: 100px;
+
+    z-index: 2;
+
+    width: 72%;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   INDUSTRIAL MACHINE LIGHT
+========================================================= */
+
+.machine-light {
+    position: absolute;
+
+    top: -8%;
+    right: -3%;
+
+    width: 42%;
+    height: 62%;
+
+    opacity: .32;
+
+    border-radius:
+        55%
+        0
+        0
+        55%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(125, 203, 246, .04),
+            rgba(170, 224, 255, .14)
+        ),
+
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, .08) 0 2px,
+            transparent 2px 44px
+        );
+
+    filter:
+        blur(3px);
+
+    transform:
+        skewX(-8deg);
+}
+
+
+.machine-light::after {
+    content: "";
+
+    position: absolute;
+
+    top: 4%;
+    right: 8%;
+
+    width: 165px;
+    height: 165px;
+
+    border:
+        18px solid
+        rgba(190, 234, 255, .13);
+
+    border-radius: 50%;
+
+    box-shadow:
+
+        0
+        0
+        45px
+        rgba(108, 199, 250, .12),
+
+        inset
+        0
+        0
+        30px
+        rgba(220, 246, 255, .08);
+}
+
+
+/* =========================================================
+   FABRIC SVG
+========================================================= */
+
+.fabric-scene {
+    position: absolute;
+
+    right: -6%;
+    bottom: 1%;
+
+    width: 112%;
+    height: auto;
+
+    overflow: visible;
+
+    filter:
+        drop-shadow(
+            0
+            34px
+            60px
+            rgba(0, 0, 0, .38)
+        );
+}
+
+
+/* =========================================================
+   FABRIC ANIMATION
+========================================================= */
+
+.fabric-layer-back {
+    transform-origin:
+        54%
+        54%;
+
+    animation:
+
+        fabricBack
+
+        10s
+
+        ease-in-out
+
+        infinite;
+}
+
+
+.fabric-layer-main {
+    transform-origin:
+        58%
+        54%;
+
+    animation:
+
+        fabricMain
+
+        7.5s
+
+        ease-in-out
+
+        infinite;
+}
+
+
+.fabric-highlight {
+    animation:
+
+        highlightPulse
+
+        6s
+
+        ease-in-out
+
+        infinite;
+}
+
+
+/* =========================================================
+   STEAM
+========================================================= */
+
+.steam-cloud {
+    position: absolute;
+
+    bottom: 43%;
+
+    width: 130px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    background:
+
+        radial-gradient(
+            ellipse,
+            rgba(230, 248, 255, .19),
+            rgba(149, 216, 252, .05) 48%,
+            transparent 72%
+        );
+
+    filter:
+        blur(25px);
+
+    animation:
+
+        steamRise
+
+        7s
+
+        ease-in-out
+
+        infinite;
+}
+
+
+.steam-a {
+    right: 17%;
+}
+
+
+.steam-b {
+    right: 35%;
+
+    animation-delay: 2.2s;
+}
+
+
+.steam-c {
+    right: 53%;
+
+    animation-delay: 4.4s;
+}
+
+
+/* =========================================================
+   WATER DROPS
+========================================================= */
+
+.water-drop {
+    position: absolute;
+
+    width: 11px;
+    height: 11px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle at 30% 26%,
+            #ffffff 0 12%,
+            #92dfff 30%,
+            rgba(44, 162, 229, .55) 52%,
+            rgba(40, 149, 214, .05) 76%
+        );
+
+    box-shadow:
+
+        0
+        0
+        14px
+
+        rgba(
+            104,
+            203,
+            255,
+            .65
+        );
+
+    animation:
+
+        bubbleFloat
+
+        5.5s
+
+        ease-in-out
+
+        infinite;
+}
+
+
+.drop-1 {
+    right: 20%;
+    top: 31%;
+
+    width: 25px;
+    height: 25px;
+}
+
+
+.drop-2 {
+    right: 8%;
+    top: 41%;
+
+    width: 8px;
+    height: 8px;
+
+    animation-delay: .9s;
+}
+
+
+.drop-3 {
+    right: 40%;
+    top: 67%;
+
+    width: 13px;
+    height: 13px;
+
+    animation-delay: 1.8s;
+}
+
+
+.drop-4 {
+    right: 53%;
+    top: 73%;
+
+    width: 8px;
+    height: 8px;
+
+    animation-delay: 2.7s;
+}
+
+
+.drop-5 {
+    right: 30%;
+    top: 78%;
+
+    width: 7px;
+    height: 7px;
+
+    animation-delay: 3.5s;
+}
+
+
+.drop-6 {
+    right: 14%;
+    top: 57%;
+
+    width: 9px;
+    height: 9px;
+
+    animation-delay: 4.1s;
+}
+
+
+.drop-7 {
+    right: 62%;
+    top: 63%;
+
+    width: 16px;
+    height: 16px;
+
+    animation-delay: 1.3s;
+}
+
+
+/* =========================================================
+   FEATURE STRIP
+========================================================= */
+
+.feature-strip {
+    position: absolute;
+
+    left:
+        clamp(
+            28px,
+            5.5vw,
+            96px
+        );
+
+    right:
+        clamp(
+            28px,
+            5.5vw,
+            96px
+        );
+
+    bottom: 38px;
+
+    z-index: 30;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+
+    align-items: stretch;
+}
+
+
+.feature-item {
+    min-height: 68px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    padding:
+        0
+        38px;
+
+    border-right:
+
+        1px solid
+
+        rgba(
+            255,
+            255,
+            255,
+            .14
+        );
+
+    color:
+        rgba(255, 255, 255, .86);
+
+    font-size: 14px;
+
+    line-height: 1.45;
+}
+
+
+.feature-item:first-child {
+    padding-left: 0;
+}
+
+
+.feature-item:last-child {
+    border-right: 0;
+}
+
+
+.feature-icon {
+    min-width: 42px;
+
+    color: #79cbfa;
+
+    font-size: 34px;
+
+    font-weight: 300;
+
+    text-align: center;
+}
+
+
+.droplet-icon {
+    transform:
+        rotate(45deg)
+        scale(.8);
+}
+
+
+/* =========================================================
+   ABOUT SECTION
+========================================================= */
+
+.about-section {
+    position: relative;
+
+    z-index: 5;
+
+    padding:
+        110px
+        clamp(28px, 7vw, 120px)
+        130px;
+
+    border-top:
+        1px solid
+        var(--line);
+
+    background:
+
+        radial-gradient(
+            circle at 15% 25%,
+            rgba(57, 174, 245, .08),
+            transparent 28%
+        ),
+
+        #030d16;
+}
+
+
+.about-kicker {
+    margin-bottom: 35px;
+
+    color:
+        var(--blue-light);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 5px;
+}
+
+
+.about-grid {
+    width:
+        min(
+            100%,
+            var(--max)
+        );
+
+    display: grid;
+
+    grid-template-columns:
+
+        minmax(
+            0,
+            1.2fr
+        )
+
+        minmax(
+            280px,
+            .8fr
+        );
+
+    gap: 80px;
+}
+
+
+.about-grid h2 {
+    max-width: 760px;
+
+    font-size:
+        clamp(
+            40px,
+            5vw,
+            78px
+        );
+
+    line-height: .98;
+
+    letter-spacing: -4px;
+}
+
+
+.about-copy {
+    align-self: end;
+}
+
+
+.about-copy p {
+    color:
+        var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+
+.about-copy a {
+    display: inline-flex;
+
+    gap: 10px;
+
+    margin-top: 28px;
+
+    color:
+        var(--blue-light);
+
+    font-size: 13px;
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   FABRIC MAIN ANIMATION
+========================================================= */
+
+@keyframes fabricMain {
+
+    0%,
+    100% {
+
+        transform:
+
+            translateY(2px)
+
+            rotate(-1deg)
+
+            skewX(-1deg)
+
+            scaleY(.98);
+
+    }
+
+
+    50% {
+
+        transform:
+
+            translateY(-24px)
+
+            rotate(1.2deg)
+
+            skewX(1.5deg)
+
+            scaleY(1.04);
+
+    }
+
+}
+
+
+/* =========================================================
+   FABRIC BACK ANIMATION
+========================================================= */
+
+@keyframes fabricBack {
+
+    0%,
+    100% {
+
+        transform:
+
+            translateY(12px)
+
+            rotate(1deg)
+
+            scaleY(.96);
+
+    }
+
+
+    50% {
+
+        transform:
+
+            translateY(-18px)
+
+            rotate(-1.3deg)
+
+            scaleY(1.04);
+
+    }
+
+}
+
+
+/* =========================================================
+   HIGHLIGHT
+========================================================= */
+
+@keyframes highlightPulse {
+
+    0%,
+    100% {
+
+        opacity: .22;
+
+        transform:
+            translateX(-30px);
+
+    }
+
+
+    50% {
+
+        opacity: .62;
+
+        transform:
+            translateX(55px);
+
+    }
+
+}
+
+
+/* =========================================================
+   STEAM ANIMATION
+========================================================= */
+
+@keyframes steamRise {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+
+            translateY(120px)
+
+            scale(.68);
+
+    }
+
+
+    30% {
+        opacity: .28;
+    }
+
+
+    70% {
+        opacity: .12;
+    }
+
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+
+            translateY(-190px)
+
+            translateX(38px)
+
+            scale(1.45);
+
+    }
+
+}
+
+
+/* =========================================================
+   WATER ANIMATION
+========================================================= */
+
+@keyframes bubbleFloat {
+
+    0%,
+    100% {
+
+        transform:
+
+            translateY(0)
+
+            scale(1);
+
+    }
+
+
+    50% {
+
+        transform:
+
+            translateY(-35px)
+
+            scale(1.14);
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1080px) {
+
+    .navigation {
+        gap: 28px;
+    }
+
+
+    .hero-copy {
+        width: 60vw;
+    }
+
+
+    .hero-art {
+        right: -22%;
+
+        width: 84%;
+
+        opacity: .78;
+    }
+
+
+    .feature-item {
+        padding:
+            0
+            24px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL TABLET / MOBILE NAV
+========================================================= */
+
+@media (max-width: 860px) {
+
+    .site-header {
+        grid-template-columns:
+            1fr
+            auto;
+
+        height: 78px;
+    }
+
+
+    .navigation {
+        display: none;
+    }
+
+
+    /* logo fix on tablet/mobile */
+
+    .brand {
+        width: 115px;
+        height: 56px;
+    }
+
+
+    .site-header .brand .brand-logo {
+        max-width: 110px !important;
+        max-height: 50px !important;
+    }
+
+
+    .hero {
+        min-height: 900px;
+
+        align-items: flex-start;
+
+        padding-top: 150px;
+    }
+
+
+    .hero-copy {
+        width: 100%;
+    }
+
+
+    .hero-art {
+        top: 300px;
+
+        right: -48%;
+
+        bottom: 110px;
+
+        width: 140%;
+
+        opacity: .36;
+    }
+
+
+    .feature-strip {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+
+        row-gap: 22px;
+    }
+
+
+    .feature-item:nth-child(2) {
+        border-right: 0;
+    }
+
+
+    .about-grid {
+        grid-template-columns:
+            1fr;
+
+        gap: 35px;
+    }
+
+}
+
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+@media (max-width: 560px) {
+
+    .site-header {
+        padding:
+            0
+            20px;
+    }
+
+
+    .brand {
+        width: 100px;
+        height: 52px;
+    }
+
+
+    .site-header .brand .brand-logo {
+        max-width: 96px !important;
+        max-height: 45px !important;
+    }
+
+
+    .official-site-button {
+        padding:
+            10px
+            14px;
+
+        font-size: 11px;
+    }
+
+
+    .hero {
+        min-height: 880px;
+
+        padding:
+            135px
+            22px
+            170px;
+    }
+
+
+    .hero h1 {
+        font-size:
+            clamp(
+                52px,
+                16vw,
+                72px
+            );
+
+        letter-spacing: -3px;
+    }
+
+
+    .eyebrow {
+        font-size: 9px;
+
+        letter-spacing: 4px;
+    }
+
+
+    .hero-description br {
+        display: none;
+    }
+
+
+    .hero-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        width:
+            min(
+                100%,
+                330px
+            );
+    }
+
+
+    .primary-button,
+    .secondary-button {
+        width: 100%;
+    }
+
+
+    .hero-art {
+        top: 380px;
+
+        right: -95%;
+
+        width: 205%;
+
+        opacity: .30;
+    }
+
+
+    .feature-strip {
+        left: 22px;
+        right: 22px;
+
+        bottom: 28px;
+
+        gap:
+            12px
+            0;
+    }
+
+
+    .feature-item {
+        min-height: 60px;
+
+        gap: 10px;
+
+        padding:
+            0
+            12px;
+
+        font-size: 11px;
+    }
+
+
+    .feature-item:first-child {
+        padding-left: 0;
+    }
+
+
+    .feature-icon {
+        min-width: 28px;
+
+        font-size: 25px;
+    }
+
+
+    .about-section {
+        padding:
+            80px
+            22px
+            95px;
+    }
+
+
+    .about-grid h2 {
+        letter-spacing: -3px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+
+}
